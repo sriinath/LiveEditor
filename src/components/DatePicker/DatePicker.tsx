@@ -1,15 +1,12 @@
 import * as React from 'react'
-import ReactDatePicker from 'react-datepicker'
+import { Input } from './styled'
 import { useState } from 'react'
 
 const DatePicker = (props: { value: string } ) => {
     const { value } = props
-    const [ curValue, setValue ] = useState(new Date(value))
+    const [ curValue, setValue ] = useState(value)
     return (
-        <ReactDatePicker
-            selected={curValue}
-            onChange={(value) => setValue(value)}
-        />
+        <Input type="date" value={curValue} onChange={e => setValue(e.currentTarget.value)} />
     )
 }
 

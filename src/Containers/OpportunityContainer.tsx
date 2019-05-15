@@ -37,7 +37,6 @@ class OpportunityContainer extends React.Component<any> {
         .catch((err: Error) => console.log(err))
     }
     updateOpportunity(id: string) {
-        console.log(id)
         if(id) {
             const { client } = this.props
             // get the updated data of the opportunity for the given id
@@ -49,7 +48,29 @@ class OpportunityContainer extends React.Component<any> {
                 variables: postBody,
                 mutation: UpdateQuery
             })
-            .then((data: any) => console.log(data))
+            .then((response: any) => {
+                const updatedResponse = response && response.data && response.data.updateOpportunity || {}
+                let { id } = updatedResponse
+                const { data } = this.props
+                const updatedOpportunitiesArr = this.defaultState.opportunities || []
+                const updatedOpportunitiesArrLen = updatedOpportunitiesArr.length
+                for(let i = 0; i < updatedOpportunitiesArrLen; i++) {
+                    if(updatedOpportunitiesArr[i] && updatedOpportunitiesArr[i].id === id) {
+                        updatedOpportunitiesArr[i] = updatedResponse
+                        if(data.length && data[i] && data[i].id === id) {
+                            data[i] = updatedResponse
+                            let actionObj = {
+                                type: 'Opportunity',
+                                data: {
+                                    opportunities: data
+                                }
+                            }
+                            this.props.dispatch(OpportunityAction(actionObj))
+                        }
+                        break
+                    }
+                }
+            })
             .catch((err: Error) => console.log(err))
         }
     }

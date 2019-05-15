@@ -7,6 +7,7 @@ const OpportunitiesWrapper = styled.div`
     flex-wrap: wrap;
 `
 const ItemBlockWrapper = styled.div`
+    background-color: #fff;
     text-align: center;
     min-width: 320px;
     max-width: 50%;
@@ -17,10 +18,9 @@ const ItemBlockWrapper = styled.div`
     padding: 7px;
     margin: 8px;
     cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     transition: box-shadow 0.6s;
     &:hover {
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        box-shadow: 0 5px 5px -3px rgba(0,0,0,0.2), 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12)
     }
 `
 const ContentWrapper = styled.div`

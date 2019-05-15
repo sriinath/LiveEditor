@@ -1,11 +1,13 @@
 "use strict";
 exports.__esModule = true;
 var node_fetch_1 = require("node-fetch");
+var console = require("console");
 var getOpportunitiesData = function () {
     return node_fetch_1["default"]('https://api-staging.aiesec.org/v2/opportunities?access_token=dd0df21c8af5d929dff19f74506c4a8153d7acd34306b9761fd4a57cfa1d483c')
         .then(function (data) { return data.json(); })
         .then(function (response) {
         if (response && response.data && response.data.length) {
+            console.log(response.data[1]);
             var constructedData = response.data.slice();
             constructedData.map(function (data) {
                 if (data) {
