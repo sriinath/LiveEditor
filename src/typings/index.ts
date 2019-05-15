@@ -5,6 +5,7 @@ interface EditableElementProps extends OpportunityEventProps {
     maxLength?: number
     label?: string
     id: string
+    labelIdentifier?: string
 }
 interface ItemBlockProps extends EditableElementProps {
     isDate?: boolean
@@ -42,6 +43,7 @@ interface OpportunityActionTypes {
 }
 interface OpportunityEventProps {
     inputChange?: (id: string, label: string, value: string ) => void
+    applyOpportunityChanges?: (id: string) => void
 }
 export {
     EditableElementProps,

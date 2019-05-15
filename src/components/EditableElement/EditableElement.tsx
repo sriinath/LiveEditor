@@ -22,14 +22,14 @@ const EditableElement: React.FC<EditableElementProps> = (props) => {
         value,
         maxLength,
         inputChange,
-        label,
-        id
+        id,
+        labelIdentifier
     } = props
     return (
         <EditableEl
             contentEditable={true}
             onKeyDown={e => checkInputValue(e.currentTarget.innerText, maxLength) && e.preventDefault()}
-            onBlur={e => inputChange(id, label, e.currentTarget.innerText)}
+            onBlur={e => inputChange(id, labelIdentifier, e.currentTarget.innerText)}
         >
             {value}
         </EditableEl>

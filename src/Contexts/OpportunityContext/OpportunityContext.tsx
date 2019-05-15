@@ -12,11 +12,13 @@ const defaultOpportunity = {
     }],
     selection_process: '',
     salary: '',
-    city: ''
+    city: '',
+    updateAvailable: false
 }
 const defaultContext = {
     data: [defaultOpportunity],
-    updateValue: (id: string, label: string ,value: string) => { } 
+    updateValue: (id: string, label: string ,value: string) => { },
+    applyOpportunityChanges: (id: string) => { }
 }
 
 const OpportunityContext = React.createContext(defaultContext)

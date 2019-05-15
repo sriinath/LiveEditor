@@ -8,11 +8,13 @@ import { AppState } from '../store/reducer'
 import { OpportunityAction } from '../store/actions'
 import { OpportunitiesProvider } from '../Contexts'
 import { OpportunitiesResponse, OpportunitiesProps, OpportunitiesData } from '../typings'
+import { UpdateQuery } from './queries/OpportunityQuery'
 
 class OpportunityContainer extends React.Component<any> {
     constructor(props: any) {
         super(props)
         this.updateData = this.updateData.bind(this)
+        this.updateOpportunity = this.updateOpportunity.bind(this)
     }
     // defaultState - initial data received from response
     defaultState: any = []
@@ -30,22 +32,41 @@ class OpportunityContainer extends React.Component<any> {
                 data
             }
             this.props.dispatch(OpportunityAction(actionObj))
+            this.defaultState = { ...data }
         })
         .catch((err: Error) => console.log(err))
     }
+    updateOpportunity(id: string) {
+        console.log(id)
+        if(id) {
+            const { client } = this.props
+            // get the updated data of the opportunity for the given id
+            let postBody = this.updatePostBody && this.updatePostBody[id]
+            if(postBody.opportunity) {
+                postBody.opportunity.id = id
+            }
+            client.mutate({
+                variables: postBody,
+                mutation: UpdateQuery
+            })
+            .then((data: any) => console.log(data))
+            .catch((err: Error) => console.log(err))
+        }
+    }
     updateData(id: string, label: string, value: string) {
-        // const { data } = this.props
+        const { data } = this.props
         // Temporary state object
         let UpdatedOpportunityStore: OpportunitiesData = {
             opportunities: []
         }
         // loop over the initial response data and check whether data is updated
-        this.defaultState.map((opportunity: OpportunitiesProps) => {
+        data.map((opportunity: OpportunitiesProps, index: number) => {
             if(opportunity && opportunity.id === id) {
+                let originalOpportunityData = this.defaultState && this.defaultState && this.defaultState.opportunities && this.defaultState.opportunities[index] || {}
+                let currentOpportunity: any = { ...opportunity }
                 if(label && value) {
-                    let currentOpportunity: any = { ...opportunity }
                     //  data is different from the initial state
-                    if(currentOpportunity[label] !== value) {
+                    if(originalOpportunityData[label] !== value) {
                         currentOpportunity[label] = value
                         // flag for indicating there was some chnges made to the opportunity
                         currentOpportunity.updateAvailable = true
@@ -63,7 +84,7 @@ class OpportunityContainer extends React.Component<any> {
                     }
                     // when state data is same as the current data
                     //  all previous changes are reverted
-                    else if(currentOpportunity[label] === value) {
+                    else if(originalOpportunityData[label] === value) {
                         if(this.updatePostBody && this.updatePostBody[id]) {
                             let OpportunityPostBody = this.updatePostBody[id].opportunity
                             if(OpportunityPostBody) {
@@ -77,6 +98,9 @@ class OpportunityContainer extends React.Component<any> {
                             }
                         }
                     }
+                    UpdatedOpportunityStore.opportunities.push(currentOpportunity)
+                }
+                else {
                     UpdatedOpportunityStore.opportunities.push(currentOpportunity)
                 }
             }
@@ -94,10 +118,10 @@ class OpportunityContainer extends React.Component<any> {
     }
     render() {
         const { data, children } = this.props
-        this.defaultState = data
         const providerValue = {
             data,
-            updateValue: this.updateData
+            updateValue: this.updateData,
+            applyOpportunityChanges: this.updateOpportunity
         }
         return (
             <OpportunitiesProvider value={providerValue}>
