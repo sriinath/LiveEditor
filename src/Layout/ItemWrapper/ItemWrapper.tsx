@@ -2,11 +2,13 @@ import * as React from 'react'
 import {
     ItemBlockWrapper,
     OpportunitiesWrapper,
-    ContentWrapper
+    ContentWrapper,
+    ApplyIcon
 } from './styled'
 import {
     EditableElement,
-    ItemBlock
+    ItemBlock,
+    IconBackground
 } from '../../components'
 import { OpportunitiesConsumer } from '../../Contexts'
 import * as moment from 'moment'
@@ -36,13 +38,11 @@ const ItemWrapper = () => {
                         </ContentWrapper>
                         <ItemBlock isDate={true} id={opportunity.id} value={getDate(opportunity.applications_close_date)} label="Application Close Date" labelIdentifier="applications_close_date" inputChange={opportunityData.updateValue} />
                         <ItemBlock id={opportunity.id} value={renderBackgroundOpportunities(opportunity.backgrounds)} label="Backgrounds" labelIdentifier="backgrounds" inputChange={opportunityData.updateValue} />
-                        <ContentWrapper>
-                            <ItemBlock id={opportunity.id} value={opportunity.selection_process} label="Selection process" labelIdentifier="selection_process" inputChange={opportunityData.updateValue} />
-                            <ItemBlock id={opportunity.id} value={opportunity.salary} label="Salary" labelIdentifier="salary" inputChange={opportunityData.updateValue} />
-                        </ContentWrapper>
+                        <ItemBlock id={opportunity.id} value={opportunity.selection_process} label="Selection process" labelIdentifier="selection_process" inputChange={opportunityData.updateValue} />
+                        <ItemBlock id={opportunity.id} value={opportunity.salary} label="Salary" labelIdentifier="salary" inputChange={opportunityData.updateValue} />
                         <ItemBlock id={opportunity.id} value={opportunity.city} labelIdentifier="city" label="City" inputChange={opportunityData.updateValue} />
-                        {opportunity.updateAvailable ? <div data-id={opportunity.id} onClick={e => opportunityData.applyOpportunityChanges(e.currentTarget.getAttribute('data-id'))} >apply</div> : ''}
-                    </ItemBlockWrapper>
+                        {opportunity.updateAvailable ? <IconBackground isFixed={false}><ApplyIcon data-id={opportunity.id} onClick={e => opportunityData.applyOpportunityChanges(e.currentTarget.getAttribute('data-id'))} /></IconBackground> : ''}
+                        </ItemBlockWrapper>
                 )}
             </OpportunitiesConsumer>
         </OpportunitiesWrapper>

@@ -26,7 +26,7 @@ module.exports = {
                       limit: 50000,
                       mimetype: "application/font-woff",
                       // Output below fonts directory
-                      name: "[name].[ext]"
+                      name: "./fonts/[name].[ext]"
                     }
                 }
             }

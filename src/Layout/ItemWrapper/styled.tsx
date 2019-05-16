@@ -3,14 +3,19 @@ import styled from 'styled-components'
 const OpportunitiesWrapper = styled.div`
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: stretch;
     flex-wrap: wrap;
+    margin: auto;
+    width: 75%;
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `
 const ItemBlockWrapper = styled.div`
-    background-color: #fff;
+    background-color: #172b3a;
     text-align: center;
-    min-width: 320px;
-    max-width: 50%;
+    min-width: 230px;
+    max-width: 290px;
     box-sizing: border-box;
     border: 1px solid #a1a1a1;
     border-radius: 5px;
@@ -27,8 +32,15 @@ const ContentWrapper = styled.div`
     display: flex;
     justify-content: space-around;
 `
+const ApplyIcon = styled.div`
+    font-family: 'FontAwesome';
+    &::before {
+        content: '\f00c';
+    }
+`
 export {
     ContentWrapper,
     ItemBlockWrapper,
-    OpportunitiesWrapper
+    OpportunitiesWrapper,
+    ApplyIcon
 }

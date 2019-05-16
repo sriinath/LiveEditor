@@ -7,7 +7,6 @@ var getOpportunitiesData = function () {
         .then(function (data) { return data.json(); })
         .then(function (response) {
         if (response && response.data && response.data.length) {
-            console.log(response.data[1]);
             var constructedData = response.data.slice();
             constructedData.map(function (data) {
                 if (data) {

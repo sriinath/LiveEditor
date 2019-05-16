@@ -6,6 +6,7 @@ const EditableEl = styled.div`
     font-size: 16px;
     cursor: initial;
     border-bottom: 1px solid #dadce0;
+    margin: 10px;
 `
 
 export {
