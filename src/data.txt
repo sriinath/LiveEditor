@@ -1,0 +1,60 @@
+This assignment will require you to display and edit data in an intuitive design. You can take design inspirations from this website for the layout. The displayed data needs to be live editable.
+Basic Introduction Of AIESEC
+Our parter, AIESEC, is the world’s largest youth-run organization. It is present in over 130 countries and focuses on leadership development. They do this by providing students and recent graduates with international internships. These internships are called opportunities. The page shared above is an example of an opportunity as seen on the youth facing side of the AIESEC platform.
+The platform is a multi-sided platform and has two main sides- the Youth and the Company. On the Youth side, students apply to an opportunity. On the Company side, the companies have to create and edit these opportunities. In this assignment, you will be building a part of the company side platform- Displaying and editing opportunities.
+Assignment Details
+You will have to interface with our API to display and edit data. The object you will have to focus on is the Opportunities object
+Implement a routing structure that enables the user to be able to view and edit any opportunity he wishes to.
+Display the below mentioned fields in an Opportunity Profile page in a pleasing design
+“title"
+"applications_close_date"
+"earliest_start_date"
+“latest_end_date”
+"description"
+"backgrounds"
+"selection_process"
+"salary"
+“role_info.city”
+Implement a live edit feature where the above mentioned fields can be edited. Implement the live edit feature as best you see fit. It can be inline edit, a modal or a separate page.
+The data needs to be sent as JSON objects via a PATCH request.
+The following validations need to be implemented-
+Title should not be longer than 100 characters
+applications_close_date cannot be less than 30 days from current date
+applications_close_date cannot be more than 90 days from current date
+The difference between earliest_start_date and latest_end_date should be between 6 to 78 weeks.
+Maximum of 3 backgrounds can be set
+All the fields should be required
+Deploy this application to Heroku or Github pages.
+Send us the link to the deployed application and source code repository.
+Points to keep in mind
+Use React (any version) or Angular (2+) to build this
+Use this Access Token- dd0df21c8af5d929dff19f74506c4a8153d7acd34306b9761fd4a57cfa1d483c
+If you are deploying to an SSL (https) enabled server, use this api base_url: https://api-staging.aiesec.org/v2 to avoid mixed content errors.
+For the “role_info.city” field you will have to use the Google Places API to input in the data in a form. Users should be able to select any place from the Google Places API.
+To test the PATCH method, please use Postman. The Swagger API docs for PATCH will not work.
+For reference on how the data is retuned, check opportunity_id: 6125, it has everything filled in.
+To get the list of backgrounds and skills, you will have to call a separate end-point called the list endpoint. It can be found here
+Research in depth on REST APIs before beginning the task.
+Explore the API, especially the opportunities object before you start work. See how the requests are being sent.
+Assessment criteria
+The level of progress made on the assignment.
+The resulting user experience of the application built.
+Use of best case practices prevalent in the industry.
+Use of abstraction (modularization) in the code.
+Bonus points if unit tests are implemented.
+Characteristics of an ideal submission
+You have a clear understanding of the requirements of the task and your submission reflects that.
+Your final output is packaged well, bug-free and ready to be directly implemented into production systems.
+You have taken edge cases into consideration.
+You have used the most optimized approach possible, ensuring that the feature runs well on a large scale production system.
+Your code is future-proof, easy to understand, well-documented and structured, so that further development/design changes can be incorporated easily.
+You have followed the best practices prevalent in the industry.
+The output of the solution will delight the end user.
+You have completed the assignment before the deadline.
+You display a strong knowledge over your field of work through the submission
+
+If you have any queries about the API, the assignment, or require any assistance, we will be happy to help you out. Please reply back to the email you received containing the assignment link with your question, to have it answered at the earliest. Please note, our team might take up to 3 days to get back to your queries. In such cases, we will adjust your submission deadline to account for the delay on our part.
+
+Wish you all the best! Happy coding!
+
+
