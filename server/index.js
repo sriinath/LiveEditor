@@ -7,7 +7,7 @@ var server = new apollo_server_1.ApolloServer({
     typeDefs: opportunities_2.typeDefs,
     resolvers: opportunities_1.resolvers
 });
-server.listen().then(function (_a) {
+server.listen({ port: process.env.PORT || 4000 }).then(function (_a) {
     var url = _a.url;
     console.log("\uD83D\uDE80  Server ready at " + url);
 });
