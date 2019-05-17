@@ -17,6 +17,6 @@ const ApollographQLServer = new ApolloServer({
     resolvers
 })
 
-ApollographQLServer.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
+ApollographQLServer.listen({ port: 4000 }).then(({ url }) => {
     console.log(`🚀 GraphQL Server ready at ${url}`);
 });

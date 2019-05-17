@@ -16,7 +16,7 @@ var ApollographQLServer = new apollo_server_1.ApolloServer({
     typeDefs: opportunities_2.typeDefs,
     resolvers: opportunities_1.resolvers
 });
-ApollographQLServer.listen({ port: process.env.PORT || 4000 }).then(function (_a) {
+ApollographQLServer.listen({ port: 4000 }).then(function (_a) {
     var url = _a.url;
     console.log("\uD83D\uDE80 GraphQL Server ready at " + url);
 });
