@@ -1,7 +1,7 @@
 import { ApolloServer } from 'apollo-server'
 import { resolvers } from './Resolvers/opportunities'
 import { typeDefs } from './Schema/opportunities'
-import express from 'express'
+import * as express from 'express'
 const app = express()
 
 const ApollographQLServer = new ApolloServer({
