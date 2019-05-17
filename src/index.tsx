@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom"
+import { createStore } from 'redux'
 
-import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './store/reducer'
 
