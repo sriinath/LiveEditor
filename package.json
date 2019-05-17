@@ -5,8 +5,8 @@
   "author": "srinath",
   "license": "ISC",
   "scripts": {
-    "start": "npm run server && webpack-dev-server --mode development",
-    "build": "npm run server && webpack --mode production",
+    "start": "webpack --mode production && npm run server",
+    "build": "webpack --mode production && npm run server",
     "server": "tsc ./server/index.ts --skipLibCheck && node ./server/index.js"
   },
   "dependencies": {
