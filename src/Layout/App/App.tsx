@@ -4,7 +4,7 @@ import ApolloClient from "apollo-boost"
 import { OpportunityContainer } from '../../Containers'
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000"
+  uri: "/graphql"
 });
 
 import { Global } from '../../common'

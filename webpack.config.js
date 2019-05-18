@@ -24,7 +24,7 @@ module.exports = {
                     options: {
                       // Limit at 50k. Above that it emits separate files
                       limit: 50000,
-                      mimetype: "application/font-woff",
+                      mimetype: "application/font",
                       // Output below fonts directory
                       name: "./fonts/[name].[ext]"
                     }

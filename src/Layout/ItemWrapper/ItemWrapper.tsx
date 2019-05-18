@@ -20,11 +20,28 @@ const renderBackgroundOpportunities = (backgrounds: {name: string}[]) => {
     })
     return backgroundText
 }
+const renderApplyButton = (id: string, clickHandler: any) => {
+    return (
+        <IconBackground
+            isFixed={false}
+            width='40px'
+            height='40px'
+            backgroundColor='#27ae60'
+            isRectangular={false}
+        >
+            <ApplyIcon
+                data-id={id}
+                onClick={e => clickHandler(e.currentTarget.getAttribute('data-id'))}
+            />
+        </IconBackground>
+    )
+}
 const getDate = (date: string) => {
     let curDate = new Date(date) 
     let momentDate = moment(curDate)
     return momentDate.format('YYYY-MM-DD')
 }
+
 const ItemWrapper = () => {
     return (
         <OpportunitiesWrapper>
@@ -41,8 +58,8 @@ const ItemWrapper = () => {
                         <ItemBlock id={opportunity.id} value={opportunity.selection_process} label="Selection process" labelIdentifier="selection_process" inputChange={opportunityData.updateValue} />
                         <ItemBlock id={opportunity.id} value={opportunity.salary} label="Salary" labelIdentifier="salary" inputChange={opportunityData.updateValue} />
                         <ItemBlock id={opportunity.id} value={opportunity.city} labelIdentifier="city" label="City" inputChange={opportunityData.updateValue} />
-                        {opportunity.updateAvailable ? <IconBackground isFixed={false}><ApplyIcon data-id={opportunity.id} onClick={e => opportunityData.applyOpportunityChanges(e.currentTarget.getAttribute('data-id'))} /></IconBackground> : ''}
-                        </ItemBlockWrapper>
+                        {opportunity.updateAvailable ? renderApplyButton(opportunity.id, opportunityData.applyOpportunityChanges) : ''}
+                    </ItemBlockWrapper>
                 )}
             </OpportunitiesConsumer>
         </OpportunitiesWrapper>
