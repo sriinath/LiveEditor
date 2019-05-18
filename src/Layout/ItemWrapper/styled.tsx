@@ -1,14 +1,29 @@
 import styled from 'styled-components'
+import {
+    BackgroundElement
+} from '../../components'
 
 const OpportunitiesWrapper = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: stretch;
     flex-wrap: wrap;
     margin: auto;
     width: 75%;
     @media (max-width: 768px) {
         width: 100%;
+    }
+    ${BackgroundElement} {
+        display: none;
+    }
+    &:hover {
+        ${BackgroundElement} {
+            display: block;
+            &:hover {
+                background-color: #fff;
+            }
+            margin: 20px auto;                
+        }
     }
 `
 const ItemBlockWrapper = styled.div`
@@ -34,8 +49,15 @@ const ContentWrapper = styled.div`
 `
 const ApplyIcon = styled.div`
     font-family: 'FontAwesome';
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 40px;
+    color: #fff;
     &::before {
         content: '\f00c';
+    }
+    &:hover {
+        color: #27ae60;
     }
 `
 export {
