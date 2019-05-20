@@ -11,6 +11,13 @@ const OpportunityQuery = gql`
         latest_end_date
         backgrounds {
             name
+            id
+            option
+        }
+        backgroundsData {
+            name
+            id
+            option
         }
         selection_process
         salary

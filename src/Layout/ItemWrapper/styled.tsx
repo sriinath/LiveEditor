@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import {
     BackgroundElement
 } from '../../components'
@@ -30,7 +30,7 @@ const ItemBlockWrapper = styled.div`
     background-color: #172b3a;
     text-align: center;
     min-width: 230px;
-    max-width: 290px;
+    max-width: 450px;
     box-sizing: border-box;
     border: 1px solid #a1a1a1;
     border-radius: 5px;
@@ -60,9 +60,35 @@ const ApplyIcon = styled.div`
         color: #27ae60;
     }
 `
+const BackgroundWrapper = styled.div`
+`
+const BackgroundEl = styled.div`
+    ${(props: { disable?: boolean, selected?: boolean }) => css`
+        background-color: ${props.selected ? '#fff' : '#27ae60'};
+        color: ${props.selected ? '#27ae60' : '#fff'};
+        opacity: ${props.disable? '0.7': '1'};
+        pointer-events: ${props.disable ? 'none' : 'initial'};
+        cursor: pointer;
+        display: inline-block;
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid ${props.selected ? '#fff' : '#27ae60'};
+    `
+    }
+`
+const ElWrapper = styled.div`
+`
+const ErrorEl = styled.div`
+    padding: 5px;
+`
+
 export {
     ContentWrapper,
     ItemBlockWrapper,
     OpportunitiesWrapper,
-    ApplyIcon
+    ApplyIcon,
+    BackgroundWrapper,
+    BackgroundEl,
+    ElWrapper,
+    ErrorEl
 }

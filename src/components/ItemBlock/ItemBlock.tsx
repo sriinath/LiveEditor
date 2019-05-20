@@ -9,11 +9,11 @@ import { DatePicker } from '../DatePicker'
 
 const ItemBlock: React.FC<ItemBlockProps> = (props) => {
     const { isDate, ...remainingProps } = props
-    const { label, value } = remainingProps
+    const { id, label, value, inputChange } = remainingProps
     return (
         <EditableElWrapper>
             {label ? <LabelEl>{label}</LabelEl> : null}
-            {isDate ? <DatePicker value={value} /> : <EditableElement {...remainingProps} />}
+            {isDate ? <DatePicker label={label} value={value} onChange={value => inputChange(id, label, value)} /> : <EditableElement {...remainingProps} />}
         </EditableElWrapper>
     )
 }
