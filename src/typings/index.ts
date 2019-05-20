@@ -23,10 +23,14 @@ interface OpportunitiesProps {
     earliest_start_date: string
     latest_end_date: string
     backgrounds: [Background]
+    backgroundsData: [Background]
     selection_process: string
     salary: string
     city: string
     updateAvailable?: boolean
+    errors?: {
+        [key: string]: string
+    }
 }
 interface OpportunitiesResponse {
     data: OpportunitiesData
@@ -36,6 +40,8 @@ interface OpportunitiesData {
 }
 interface Background {
     name: string
+    id: string
+    option: string
 }
 interface OpportunityActionTypes {
     type: string
@@ -53,5 +59,6 @@ export {
     OpportunityActionTypes,
     OpportunitiesResponse,
     OpportunitiesData,
-    OpportunityEventProps
+    OpportunityEventProps,
+    Background
 }

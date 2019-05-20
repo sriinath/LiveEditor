@@ -7,6 +7,10 @@ const EditableEl = styled.div`
     cursor: initial;
     border-bottom: 1px solid #dadce0;
     margin: 10px;
+    color: #555;
+    &:empty::before {
+        content: ${(props: { label: string }) => props.label || ''};
+    }
 `
 
 export {

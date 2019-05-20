@@ -7,6 +7,10 @@ const Input = styled.input`
     &::-webkit-clear-button {
         display: none;
     }
+    &:empty::before {
+        content: ${(props: { label: string }) => props.label || ''};
+        color: '#555';
+    }
 `
 
 export { Input }
